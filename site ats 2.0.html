@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ATS Rénovation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins', sans-serif;}
+    html,body{overflow-x:hidden;width:100%;max-width:100vw;}
+    body{background:#f5f7fa;color:#222;line-height:1.6;}
+    a{text-decoration:none;color:inherit;}
+    header{background:linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop');background-size:cover;background-position:center;height:100vh;color:white;}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:25px 8%;position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);}
+    .logo-wrapper{display:flex;align-items:center;gap:14px;}
+    .logo-img{height:60px;width:60px;object-fit:cover;border-radius:50%;border:2px solid rgba(255,255,255,0.3);}
+    .logo-divider{width:2px;height:38px;background:rgba(255,255,255,0.3);}
+    .nav-phone{display:flex;align-items:center;gap:8px;background:rgba(230,57,70,0.15);border:1px solid rgba(230,57,70,0.4);padding:8px 16px;border-radius:50px;color:white;font-weight:600;font-size:15px;transition:0.3s;}
+    .nav-phone:hover{background:rgba(230,57,70,0.35);}
+    nav ul{display:flex;gap:30px;list-style:none;}
+    nav ul li a{color:white;font-weight:500;transition:0.3s;}
+    nav ul li a:hover{color:#ffb703;}
+    .hero{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;height:100%;padding:0 8%;}
+    .hero h1{font-size:60px;max-width:700px;line-height:1.1;margin-bottom:20px;}
+    .hero p{max-width:650px;margin-bottom:30px;font-size:18px;}
+    .hero-phone{display:flex;align-items:center;gap:12px;background:rgba(230,57,70,0.9);padding:14px 26px;border-radius:10px;margin-bottom:25px;font-size:20px;font-weight:700;letter-spacing:1px;}
+    .btn{display:inline-block;padding:15px 30px;background:#ffb703;color:#000;font-weight:600;border-radius:8px;transition:0.3s;}
+    .btn:hover{background:#fb8500;transform:translateY(-2px);}
+    section{padding:90px 8%;}
+    .section-title{text-align:center;margin-bottom:50px;}
+    .section-title h2{font-size:40px;color:#0d1b2a;}
+    .section-title p{color:#666;margin-top:10px;}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;}
+    .card{background:white;padding:30px;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.08);transition:0.3s;}
+    .card:hover{transform:translateY(-8px);}
+    .card h3{margin-bottom:15px;color:#023047;}
+    .stats{background:#023047;color:white;}
+    .stats-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;text-align:center;}
+    .stat h3{font-size:50px;color:#ffb703;}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+    .gallery img{width:100%;border-radius:15px;height:250px;object-fit:cover;}
+    .devis-container{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+    form{background:white;padding:35px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.08);}
+    form input,form textarea,form select{width:100%;padding:15px;margin-bottom:18px;border:1px solid #ddd;border-radius:8px;font-size:15px;}
+    form button{width:100%;border:none;cursor:pointer;font-size:16px;}
+    .appointment{background:#edf2f7;}
+    .appointment-box{max-width:700px;margin:auto;}
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+    .testimonial{background:white;padding:25px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.08);}
+    footer{background:#0d1b2a;color:white;padding:50px 8%;}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
+    .footer-grid h3{margin-bottom:20px;color:#ffb703;}
+    .rge-banner{background:linear-gradient(135deg,#1a6e2e,#2d9e47);color:white;padding:18px 8%;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;text-align:center;}
+    .rge-badge{background:white;color:#1a6e2e;font-weight:800;font-size:18px;padding:8px 18px;border-radius:8px;letter-spacing:1px;}
+    .rge-text{font-size:16px;font-weight:500;}
+    .footer-bottom{text-align:center;margin-top:40px;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;color:#bbb;}
+    .contact-info p{margin-bottom:10px;}
+    .contact-phone-highlight{display:inline-flex;align-items:center;gap:8px;background:#e63946;color:white;padding:10px 18px;border-radius:8px;font-size:17px;font-weight:700;margin-bottom:12px;letter-spacing:1px;}
+    @media(max-width:900px){
+      nav{flex-direction:column;gap:10px;padding:15px 5%;}
+      nav ul{flex-wrap:wrap;justify-content:center;gap:12px;}
+      nav ul li a{font-size:13px;}
+      .nav-phone{font-size:13px;}
+      .logo-img{height:45px;width:45px;}
+      .hero{padding:0 5%;padding-top:140px;}
+      .hero h1{font-size:28px;}
+      .hero p{font-size:15px;}
+      .hero-phone{font-size:16px;padding:10px 18px;}
+      .btn{padding:12px 22px;font-size:14px;}
+      section{padding:60px 5%;}
+      .section-title h2{font-size:28px;}
+      .devis-container{grid-template-columns:1fr;}
+      .stat h3{font-size:36px;}
+      .gallery{grid-template-columns:1fr;}
+      .gallery img{height:200px;}
+      form{padding:20px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo-wrapper">
+      <img src="https://raw.githubusercontent.com/eren740/Logo-/main/c6db571d-50e8-4255-81ba-4c6b0ea30f0e.jpeg" alt="ATS Renovations Logo" class="logo-img">
+      <div class="logo-divider"></div>
+      <a href="tel:0769848336" class="nav-phone">
+        <span>📞</span> 07 69 84 83 36
+      </a>
+    </div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#devis">Devis</a></li>
+      <li><a href="#rendezvous">Rendez-vous</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+    <h1>Charpente, Couverture, Façade & Isolation</h1>
+    <p>Artisan certifié <strong>Qualibat RGE</strong> — Spécialiste en charpente, couverture, zinguerie, isolation façade & combles, ravalement et peinture. Travaux neufs et rénovation. Intervention rapide, devis gratuit.</p>
+    <a href="tel:0769848336" class="hero-phone">📞 07 69 84 83 36</a>
+    <a href="#devis" class="btn">Demander un devis gratuit</a>
+  </div>
+</header>
+
+<div class="rge-banner">
+  <span class="rge-badge">✅ Qualibat RGE</span>
+  <span class="rge-text">Entreprise certifiée RGE — Isolation façade & toiture éligibles aux aides de l'État (MaPrimeRénov', CEE)</span>
+</div>
+
+<section id="services">
+  <div class="section-title"><h2>Nos Services</h2><p>Des prestations complètes pour votre habitat</p></div>
+
+  <h3 style="font-size:24px;color:#e63946;margin-bottom:20px;padding-left:5px;border-left:4px solid #e63946;padding-left:15px;">🏗️ Charpente - Couverture - Zinguerie</h3>
+  <div class="services" style="margin-bottom:40px;">
+    <div class="card"><h3>Charpente</h3><p>Construction et rénovation de charpentes bois, traditionnelles ou industrielles.</p></div>
+    <div class="card"><h3>Couverture & Rénovation toiture</h3><p>Réfection complète de toiture ancienne avec matériaux modernes et durables.</p></div>
+    <div class="card"><h3>Zinguerie</h3><p>Installation et réparation de gouttières, chéneaux, faîtages et évacuations.</p></div>
+    <div class="card"><h3>Recherche de fuite</h3><p>Détection rapide des infiltrations et réparation immédiate.</p></div>
+    <div class="card"><h3>Nettoyage & démoussage</h3><p>Nettoyage haute pression et traitement anti-mousse professionnel.</p></div>
+    <div class="card"><h3>Urgence toiture 24h/24</h3><p>Intervention rapide après tempête ou dégâts importants.</p></div>
+  </div>
+
+  <h3 style="font-size:24px;color:#e63946;margin-bottom:20px;border-left:4px solid #e63946;padding-left:15px;">🏠 Façade - Isolation - Peinture</h3>
+  <div class="services">
+    <div class="card"><h3>Isolation de façade (ITE)</h3><p>Isolation thermique par l'extérieur pour améliorer votre confort et réduire vos factures.</p></div>
+    <div class="card"><h3>Isolation des combles</h3><p>Réduction des pertes énergétiques et amélioration du confort thermique.</p></div>
+    <div class="card"><h3>Ravalement de façade</h3><p>Nettoyage, réparation et embellissement de vos façades extérieures.</p></div>
+    <div class="card"><h3>Peinture intérieure & extérieure</h3><p>Travaux de peinture soignés pour neuf et rénovation.</p></div>
+    <div class="card"><h3>Construction neuve</h3><p>Réalisation complète de vos projets de construction neuve.</p></div>
+    <div class="card"><h3>Rénovation complète</h3><p>Prise en charge globale de vos projets de rénovation intérieure et extérieure.</p></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-container">
+    <div class="stat"><h3>20+</h3><p>Années d'expérience</p></div>
+    <div class="stat"><h3>900+</h3><p>Chantiers réalisés</p></div>
+    <div class="stat"><h3>98%</h3><p>Clients satisfaits</p></div>
+    <div class="stat"><h3>24/7</h3><p>Service d'urgence</p></div>
+  </div>
+</section>
+
+<section id="realisations">
+  <div class="section-title"><h2>Nos Réalisations</h2><p>Quelques exemples de chantiers réalisés</p></div>
+  <div class="gallery">
+    <img src="https://raw.githubusercontent.com/eren740/R-alisation-chantier-/main/FullSizeRender.jpeg" alt="Chantier 1">
+    <img src="https://raw.githubusercontent.com/eren740/R-alisation-chantier-/main/IMG_5350.jpeg" alt="Chantier 2">
+    <img src="https://raw.githubusercontent.com/eren740/R-alisation-chantier-/main/IMG_5351.jpeg" alt="Chantier 3">
+    <img src="https://raw.githubusercontent.com/eren740/R-alisation-chantier-/main/dji_fly_20250302_171856_144_1740936122426_photo.jpeg" alt="Chantier 4">
+    <img src="https://raw.githubusercontent.com/eren740/R-alisation-chantier-/main/dji_fly_20250302_172052_151_1740937424968_photo.jpeg" alt="Chantier 5">
+    <img src="https://raw.githubusercontent.com/eren740/R-alisation-chantier-/main/dji_fly_20250302_172242_154_1740937649921_photo.jpeg" alt="Chantier 6">
+    <img src="https://raw.githubusercontent.com/eren740/R-alisation-chantier-/main/dji_fly_20250302_172324_157_1740937649921_photo.jpeg" alt="Chantier 7">
+    <img src="https://raw.githubusercontent.com/eren740/R-alisation-chantier-/main/dji_fly_20250302_172424_160_1740937649921_photo.jpeg" alt="Chantier 8">
+    <img src="https://raw.githubusercontent.com/eren740/Chantier-/main/FullSizeRender.jpeg" alt="Chantier 9">
+    <img src="https://raw.githubusercontent.com/eren740/Chantier-/main/dji_fly_20250302_172424_160_1740937475209_photo.jpeg" alt="Chantier 10">
+    <img src="https://raw.githubusercontent.com/eren740/Chantier-/main/dji_fly_20250302_172538_164_1740937483867_photo.jpeg" alt="Chantier 11">
+    <img src="https://raw.githubusercontent.com/eren740/Image-chantier-/main/IMG_1267.jpeg" alt="Chantier 12">
+    <img src="https://raw.githubusercontent.com/eren740/Image-chantier-/main/IMG_4948.jpeg" alt="Chantier 13">
+    <img src="https://raw.githubusercontent.com/eren740/Image-chantier-/main/IMG_4950.jpeg" alt="Chantier 14">
+    <img src="https://raw.githubusercontent.com/eren740/Image-chantier-/main/IMG_5076.jpeg" alt="Chantier 15">
+    <img src="https://raw.githubusercontent.com/eren740/Image-chantier-/main/IMG_8566.jpeg" alt="Chantier 16">
+    <img src="https://raw.githubusercontent.com/eren740/Image-chantier-/main/IMG_8792.jpeg" alt="Chantier 17">
+    <img src="https://raw.githubusercontent.com/eren740/Image-chantier-/main/IMG_9475.jpeg" alt="Chantier 18">
+  </div>
+</section>
+
+<section id="devis">
+  <div class="section-title"><h2>Demande de devis gratuit</h2><p>Recevez une estimation rapide sous 24h</p></div>
+  <div class="devis-container">
+    <div>
+      <h3 style="font-size:32px;margin-bottom:20px;">Besoin d'un artisan couvreur ?</h3>
+      <p style="margin-bottom:20px;">Décrivez votre projet et obtenez un devis personnalisé gratuitement.</p>
+      <ul style="padding-left:20px;margin-bottom:25px;">
+        <li>✔ Déplacement gratuit</li>
+        <li>✔ Diagnostic toiture</li>
+        <li>✔ Devis sans engagement</li>
+        <li>✔ Intervention rapide</li>
+      </ul>
+      <a href="tel:0769848336" style="display:inline-flex;align-items:center;gap:10px;background:#e63946;color:white;padding:14px 24px;border-radius:10px;font-size:18px;font-weight:700;letter-spacing:1px;">📞 07 69 84 83 36</a>
+    </div>
+    <form action="https://formspree.io/f/mwvjdrnl" method="POST">
+      <input type="text" name="nom" placeholder="Nom complet" required>
+      <input type="email" name="email" placeholder="Adresse e-mail" required>
+      <input type="tel" name="telephone" placeholder="Téléphone" required>
+      <select name="prestation" required>
+        <option value="">Type de prestation</option>
+        <option>Rénovation toiture</option>
+        <option>Nettoyage toiture</option>
+        <option>Recherche de fuite</option>
+        <option>Isolation</option>
+        <option>Zinguerie</option>
+        <option>Facade</option>
+        <option>Peinture</option>
+        <option>Charpente</option>
+      </select>
+      <textarea name="message" rows="5" placeholder="Décrivez votre projet..."></textarea>
+      <button class="btn" type="submit">Envoyer ma demande</button>
+    </form>
+  </div>
+</section>
+
+<section id="rendezvous" class="appointment">
+  <div class="section-title"><h2>Prise de rendez-vous</h2><p>Choisissez une date pour une visite technique</p></div>
+  <div class="appointment-box">
+    <form action="https://formspree.io/f/mwvjdrnl" method="POST">
+      <input type="text" name="nom" placeholder="Nom et prénom">
+      <input type="tel" name="telephone" placeholder="Téléphone">
+      <input type="email" name="email" placeholder="Adresse e-mail">
+      <input type="date" name="date">
+      <input type="time" name="heure">
+      <textarea name="message" rows="4" placeholder="Informations complémentaires"></textarea>
+      <button class="btn" type="submit">Réserver un rendez-vous</button>
+    </form>
+  </div>
+</section>
+
+<section>
+  <div class="section-title"><h2>Avis Clients</h2><p>Ils nous ont fait confiance</p></div>
+  <div class="testimonials">
+    <div class="testimonial"><p>"Travail sérieux et rapide. Ma toiture a été rénovée parfaitement."</p><strong>- Jean M.</strong></div>
+    <div class="testimonial"><p>"Très professionnel, intervention rapide après une fuite importante."</p><strong>- Sophie L.</strong></div>
+    <div class="testimonial"><p>"Excellent rapport qualité/prix et équipe très sympathique."</p><strong>- Marc D.</strong></div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="https://raw.githubusercontent.com/eren740/Logo-/main/c6db571d-50e8-4255-81ba-4c6b0ea30f0e.jpeg" alt="ATS Renovations Logo">
+      </div>
+      <p style="margin-top:15px;">Spécialiste en rénovation toiture, couverture et isolation.</p>
+    </div>
+    <div class="contact-info">
+      <h3>Contact</h3>
+      <a href="tel:0769848336" class="contact-phone-highlight">📞 07 69 84 83 36</a>
+      <p>📧 <a href="mailto:atsrenovations68@gmail.com" style="color:white;">atsrenovations68@gmail.com</a></p>
+      <p>📍 1 route de Zimerbach, Turckheim</p>
+    </div>
+    <div>
+      <h3>Horaires</h3>
+      <p>Lundi - Vendredi : 8h00 - 19h00</p>
+      <p>Samedi : 9h00 - 16h00</p>
+      <p>Urgence toiture : 24h/24</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 ATS Renovations - Tous droits réservés</div>
+</footer>
+
+</body>
+</html>
